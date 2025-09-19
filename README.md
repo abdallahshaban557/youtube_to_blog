@@ -72,5 +72,5 @@ You are a technical writer. Create a step-by-step tutorial based on the provided
 ```
 Then, run the command:
 ```bash
-dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=some_video_id" -p "my_prompt.md" -o "tutorial.md"
+dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=JTk2Exr7FO4" -p "my_prompt.md" -o "universal.md"
 ```
