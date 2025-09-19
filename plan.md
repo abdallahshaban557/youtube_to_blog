@@ -3,7 +3,7 @@
 ## 1. YouTube Transcript Fetching
 
 - **Goal:** Obtain the transcript from a given YouTube video URL.
-- **Method:** Utilize a third-party library or API that can extract video transcripts. A good candidate is the `youtube_explode_dart` package, which provides a clean way to get video metadata and transcripts.
+- **Method:** Utilize a custom transcript fetcher (`lib/transcript_fetcher.dart`) that interacts directly with YouTube's internal API. This approach provides more control and avoids external library dependencies for this critical step.
 
 ## 2. Gemini API Integration
 
@@ -54,6 +54,7 @@
 |   |-- youtube_to_blog.dart  // Main executable
 |-- lib/
 |   |-- youtube_to_blog.dart  // Core logic
+|   |-- transcript_fetcher.dart // Custom YouTube transcript fetcher
 |-- test/
 |   |-- youtube_to_blog_test.dart // Unit tests
 |-- .gitignore
@@ -67,13 +68,13 @@
 ## Implementation Steps
 
 - [x] **Step 1: Set up Dependencies**
-    - [x] Add `youtube_explode_dart`, `dartantic_ai`, and `args` to `pubspec.yaml`.
+    - [x] Add `http`, `dartantic_ai`, and `args` to `pubspec.yaml`.
     - [x] Run `dart pub get`.
 
-- [ ] **Step 2: Fetch YouTube Transcript**
-    - [ ] Create a function in `lib/youtube_to_blog.dart` that takes a YouTube URL.
-    - [ ] Use `youtube_explode_dart` to get the transcript.
-    - [ ] Handle cases where a transcript is unavailable.
+- [x] **Step 2: Fetch YouTube Transcript**
+    - [x] Create a function in `lib/youtube_to_blog.dart` that takes a YouTube URL.
+    - [x] Use the custom `YouTubeTranscriptFetcher` to get the transcript.
+    - [x] Handle cases where a transcript is unavailable.
 
 - [ ] **Step 3: Implement Gemini Logic**
     - [ ] Create a class or function to interact with the Gemini API.
