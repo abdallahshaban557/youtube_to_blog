@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'transcript_fetcher.dart';
 
 Future<String> getTranscript(String videoUrl, {String languageCode = 'en'}) async {
@@ -18,5 +20,37 @@ Future<String> getTranscript(String videoUrl, {String languageCode = 'en'}) asyn
     return 'An unexpected error occurred: $e';
   } finally {
     fetcher.dispose();
+  }
+}
+
+Future<String> generateBlogPost(String transcript, String systemPrompt) async {
+  // 1. Get the API Key from the environment variables.
+  final apiKey = Platform.environment['GEMINI_API_KEY'];
+  if (apiKey == null || apiKey.isEmpty) {
+    return 'Error: GEMINI_API_KEY environment variable not set.';
+  }
+
+  try {
+    // 2. Create the generative model.
+    final model = GenerativeModel(
+      model: 'gemini-1.5-flash-latest', 
+      apiKey: apiKey,
+      generationConfig: GenerationConfig(maxOutputTokens: 2048),
+    );
+
+    // 3. Combine the system prompt and transcript into a single prompt.
+    final fullPrompt = '$systemPrompt\n\nHere is the transcript:\n\n$transcript';
+    final prompt = [
+      Content.text(fullPrompt),
+    ];
+
+    // 4. Generate the content.
+    final response = await model.generateContent(prompt);
+
+    // 5. Return the generated text.
+    return response.text ?? 'Error: No content was generated.';
+    
+  } catch (e) {
+    return 'Error generating blog post: $e';
   }
 }

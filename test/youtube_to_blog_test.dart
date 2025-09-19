@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:youtube_to_blog/youtube_to_blog.dart';
 import 'package:test/test.dart';
 
@@ -25,5 +26,29 @@ void main() {
 
       expect(transcript, startsWith('Error'));
     }, timeout: Timeout(Duration(seconds: 30)));
+  });
+
+  group('Gemini Blog Post Generation', () {
+    setUpAll(() {
+      // This check runs once before any tests in this group.
+      // It makes the API key a mandatory prerequisite for the test suite.
+      if (!Platform.environment.containsKey('GEMINI_API_KEY') || Platform.environment['GEMINI_API_KEY']!.isEmpty) {
+        throw StateError(
+            'FATAL: GEMINI_API_KEY environment variable not set. This is required for integration tests.');
+      }
+    });
+
+    test('should generate a blog post from a transcript', () async {
+      final transcript = 'This is a test transcript about the Dart programming language. Dart is fun.';
+      final systemPrompt = 'You are a helpful assistant. Create a short blog post from the following transcript.';
+      
+      final result = await generateBlogPost(transcript, systemPrompt);
+
+      print('Generated Blog Post: $result');
+
+      expect(result, isNotEmpty);
+      expect(result, isNot(startsWith('Error')));
+      expect(result.toLowerCase(), contains('dart')); // Check if the topic is mentioned.
+    }, timeout: Timeout(Duration(seconds: 60)));
   });
 }

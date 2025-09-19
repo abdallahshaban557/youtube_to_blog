@@ -8,7 +8,7 @@
 ## 2. Gemini API Integration
 
 - **Goal:** Connect to the Gemini API to process the transcript and generate content.
-- **Method:** Use the `dartantic_ai` package for Dart. This will allow us to send prompts to the Gemini model and receive the generated blog post.
+- **Method:** Use the `google_generative_ai` package for Dart. This will allow us to send prompts to the Gemini model and receive the generated blog post.
 
 ## 3. Core Logic - The "YouTuber"
 
@@ -68,7 +68,7 @@
 ## Implementation Steps
 
 - [x] **Step 1: Set up Dependencies**
-    - [x] Add `http`, `dartantic_ai`, and `args` to `pubspec.yaml`.
+    - [x] Add `http`, `google_generative_ai`, and `args` to `pubspec.yaml`.
     - [x] Run `dart pub get`.
 
 - [x] **Step 2: Fetch YouTube Transcript**
@@ -76,11 +76,12 @@
     - [x] Use the custom `YouTubeTranscriptFetcher` to get the transcript.
     - [x] Handle cases where a transcript is unavailable.
 
-- [ ] **Step 3: Implement Gemini Logic**
-    - [ ] Create a class or function to interact with the Gemini API.
-    - [ ] It should take the transcript and a system prompt as input.
-    - [ ] Use `dartantic_ai` to send the prompt and return the generated text.
-    - [ ] Load the Gemini API key from the `GEMINI_API_KEY` environment variable.
+- [x] **Step 3: Implement Gemini Logic**
+    - [x] Create a class or function to interact with the Gemini API.
+    - [x] It should take the transcript and a system prompt as input.
+    - [x] Use `google_generative_ai` to send the prompt and return the generated text.
+    - [x] Load the Gemini API key from the `GEMINI_API_KEY` environment variable.
+    - [x] add tests
 
 - [ ] **Step 4: Build the CLI**
     - [ ] In `bin/youtube_to_blog.dart`, set up argument parsing using the `args` package.

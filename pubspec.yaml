@@ -9,7 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   args: ^2.7.0
-  dartantic_ai: ^1.0.8
+  google_generative_ai: ^0.4.7
   http: ^1.5.0
   path: ^1.9.0
 
