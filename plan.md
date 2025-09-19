@@ -83,13 +83,13 @@
     - [x] Load the Gemini API key from the `GEMINI_API_KEY` environment variable.
     - [x] add tests
 
-- [ ] **Step 4: Build the CLI**
-    - [ ] In `bin/youtube_to_blog.dart`, set up argument parsing using the `args` package.
-    - [ ] Define the `--url`, `--prompt`, and `--output` arguments.
-    - [ ] Read the system prompt from a file if the `--prompt` argument is provided, otherwise use a default.
+- [x] **Step 4: Build the CLI**
+    - [x] In `bin/youtube_to_blog.dart`, set up argument parsing using the `args` package.
+    - [x] Define the `--url`, `--prompt`, and `--output` arguments.
+    - [x] Read the system prompt from a file if the `--prompt` argument is provided, otherwise use a default.
 
-- [ ] **Step 5: Orchestrate the Workflow**
-    - [ ] In `bin/youtube_to_blog.dart`, connect the pieces:
+- [x] **Step 5: Orchestrate the Workflow**
+    - [x] In `bin/youtube_to_blog.dart`, connect the pieces:
         1.  Parse the command-line arguments.
         2.  Call the YouTube transcript fetcher.
         3.  Call the Gemini logic with the transcript and system prompt.
