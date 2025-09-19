@@ -3,7 +3,7 @@
 ## 1. YouTube Transcript Fetching
 
 - **Goal:** Obtain the transcript from a given YouTube video URL.
-- **Method:** Utilize a custom transcript fetcher (`lib/transcript_fetcher.dart`) that interacts directly with YouTube's internal API. This approach provides more control and avoids external library dependencies for this critical step.
+- **Method:** Utilize a custom transcript fetcher (`lib/transcript_fetcher.dart`) that interacts directly with YouTube's internal API. This approach provides more control and avoids external library dependencies for this critical step. I got the code from [here](https://github.com/Hexer10/youtube_explode_dart/issues/349#issuecomment-2965582545)
 
 ## 2. Gemini API Integration
 
