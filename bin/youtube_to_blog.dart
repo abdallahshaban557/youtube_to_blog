@@ -51,8 +51,13 @@ void main(List<String> arguments) async {
 
     // 4. Handle the output
     if (outputPath != null) {
-      await File(outputPath).writeAsString(blogPost);
-      print('Blog post saved to: $outputPath');
+      final outputDir = Directory('blog_posts');
+      if (!await outputDir.exists()) {
+        await outputDir.create(recursive: true);
+      }
+      final finalPath = '${outputDir.path}/$outputPath';
+      await File(finalPath).writeAsString(blogPost);
+      print('Blog post saved to: $finalPath');
     } else {
       print('\n--- GENERATED BLOG POST ---\n');
       print(blogPost);
