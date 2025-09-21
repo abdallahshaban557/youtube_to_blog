@@ -20,7 +20,11 @@ void main(List<String> arguments) async {
 
     final url = argResults['url'] as String;
     final promptPath = argResults['prompt'] as String?;
-    final outputPath = argResults['output'] as String?;
+    var outputPath = argResults['output'] as String?;
+
+    if (outputPath != null && !outputPath.endsWith('.md')) {
+      outputPath = '$outputPath.md';
+    }
 
     // 1. Determine the system prompt
     print('Determining system prompt...');
@@ -51,13 +55,8 @@ void main(List<String> arguments) async {
 
     // 4. Handle the output
     if (outputPath != null) {
-      final outputDir = Directory('blog_posts');
-      if (!await outputDir.exists()) {
-        await outputDir.create(recursive: true);
-      }
-      final finalPath = '${outputDir.path}/$outputPath';
-      await File(finalPath).writeAsString(blogPost);
-      print('Blog post saved to: $finalPath');
+      final savedPath = await saveBlogPost(blogPost, outputPath);
+      print('Blog post saved to: $savedPath');
     } else {
       print('\n--- GENERATED BLOG POST ---\n');
       print(blogPost);

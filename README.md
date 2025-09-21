@@ -50,7 +50,7 @@ The tool is run from the command line using `dart run`.
 ### Command-Line Arguments
 
 - `--url` (or `-u`): **(Required)** The full URL of the YouTube video.
-- `--output` (or `-o`): (Optional) The file path to save the generated blog post (e.g., `my-post.md`). If omitted, the output will be printed to the console.
+- `--output` (or `-o`): (Optional) The file path to save the generated blog post (e.g., `my-post`). If omitted, the output will be printed to the console.
 - `--prompt` (or `-p`): (Optional) The path to a text file containing a custom system prompt. If omitted, a default prompt for creating a blog post will be used.
 
 ### Examples
@@ -62,7 +62,7 @@ dart run bin/youtube_to_blog.dart --url "https://www.youtube.com/watch?v=some_vi
 
 **2. Generate a blog post and save it to a file:**
 ```bash
-dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=some_video_id" -o "my_awesome_post.md"
+dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=some_video_id" -o "my_awesome_post"
 ```
 
 **3. Generate a blog post using a custom prompt:**
@@ -72,5 +72,5 @@ You are a technical writer. Create a step-by-step tutorial based on the provided
 ```
 Then, run the command:
 ```bash
-dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=JTk2Exr7FO4" -p "my_prompt.md" -o "universal.md"
+dart run bin/youtube_to_blog.dart -u "https://www.youtube.com/watch?v=JTk2Exr7FO4" -p "my_prompt.md" -o "universal"
 ```

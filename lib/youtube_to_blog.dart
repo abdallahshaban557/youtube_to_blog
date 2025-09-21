@@ -41,7 +41,7 @@ Future<String> generateBlogPost(String transcript, String systemPrompt) async {
     final model = GenerativeModel(
       model: 'gemini-2.5-flash',
       apiKey: apiKey,
-      generationConfig: GenerationConfig(maxOutputTokens: 10000),
+      generationConfig: GenerationConfig(maxOutputTokens: 8192),
     );
 
     // 3. Combine the system prompt and transcript into a single prompt.
@@ -57,4 +57,33 @@ Future<String> generateBlogPost(String transcript, String systemPrompt) async {
   } catch (e) {
     return 'Error generating blog post: $e';
   }
+}
+
+Future<String> saveBlogPost(String content, String outputFilename) async {
+  final outputDir = Directory('blog_posts');
+  if (!await outputDir.exists()) {
+    await outputDir.create(recursive: true);
+  }
+
+  // Create a timestamp
+  final timestamp = DateTime.now()
+      .toIso8601String()
+      .replaceAll('-', '')
+      .replaceAll(':', '')
+      .split('.')
+      .first;
+
+  // Get the filename without the extension
+  final baseName = outputFilename.contains('.')
+      ? outputFilename.substring(0, outputFilename.lastIndexOf('.'))
+      : outputFilename;
+
+  // Get the extension, defaulting to .md
+  final extension = outputFilename.contains('.')
+      ? outputFilename.substring(outputFilename.lastIndexOf('.'))
+      : '.md';
+
+  final finalPath = '${outputDir.path}/${baseName}_$timestamp$extension';
+  await File(finalPath).writeAsString(content);
+  return finalPath;
 }
