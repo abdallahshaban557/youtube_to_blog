@@ -13,7 +13,7 @@ void main(List<String> arguments) async {
         abbr: 'p',
         help: 'A path to a markdown file (.md) containing the system prompt.')
     ..addOption('output',
-        abbr: 'o', help: 'The path to save the generated blog post file.');
+        abbr: 'o', help: 'The filename to save the generated blog post.');
 
   try {
     final argResults = parser.parse(arguments);

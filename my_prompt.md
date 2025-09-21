@@ -32,4 +32,4 @@ From the provided transcript, generate a case study blog post that follows this 
 *   Briefly summarize the project's success.
 *   End with a strong, forward-looking statement about the company's future with Flutter.
 
-**Tone:** Professional, friendly, approachable, confident, and data-driven. Avoid overly technical jargon unless it's essential. The focus should be on the *results* and *impact* of using Flutter.
+**Tone:** Professional, friendly, approachable, confident, and data-driven. Avoid overly technical jargon unless it's essential. The focus should be on the *results* and *impact* of using Flutter. Also, make sure the content sounds like it was written by a human, and make sure to not exagerate claims.
